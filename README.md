@@ -68,11 +68,11 @@ We need to set up the Azure resource group, region, storage account, and an app 
     {
     "connectionStrings": [
         {
-        "connectionString": "AccountEndpoint=https://neighborlycosmos.documents.azure.com:443/;AccountKey=xxxxxxxxxxxx;",
+        "connectionString": "mongodb://duongnq9-project2-cosmosdb-acc:gjKNOD7FD6SaBYJM2mt8gCOjDUEXdBmEUXMswMI4T8zkLobfEhfPI29q4AVp2ae05hofX6pEM5H38oEzZ69iyA==@duongnq9-project2-cosmosdb-acc.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@duongnq9-project2-cosmosdb-acc@",
         "description": "Primary SQL Connection String"
         },
         {
-        "connectionString": "AccountEndpoint=https://neighborlycosmos.documents.azure.com:443/;AccountKey=xxxxxxxxxxxxx;",
+        "connectionString": "mongodb://duongnq9-project2-cosmosdb-acc:CsBeColDqDU9YU9D7exOUmPXFZopJI3TYOaKNK3yAY99Fqy9QJFiT3Y1lGoCQFRfjIfdLcgxFaAh9KcJo0yd0Q==@duongnq9-project2-cosmosdb-acc.mongo.cosmos.azure.com:10255/?ssl=true&replicaSet=globaldb&retrywrites=false&maxIdleTimeMS=120000&appName=@duongnq9-project2-cosmosdb-acc@",
         "description": "Secondary SQL Connection String"
         } 
         
