@@ -1,0 +1,207 @@
+data:
+  FUNCTIONS_WORKER_RUNTIME: cHl0aG9u
+  AzureWebJobsStorage: RGVmYXVsdEVuZHBvaW50c1Byb3RvY29sPWh0dHBzO0FjY291bnROYW1lPWR1b25nbnE5cHJvamVjdDJzYTtBY2NvdW50S2V5PVJLcEZrNXQyNC9MSWVJb1lzeUZRaW5HYjg0YVk3Mkw1dHd1b3g4dU1lUDl1MG9tUWZXUHlEdDk1R2xFNFhPRk8xUHB6bFphNC9DTTNsaFRKSTQ1ZjNBPT07RW5kcG9pbnRTdWZmaXg9Y29yZS53aW5kb3dzLm5ldA==
+  FUNCTIONS_EXTENSION_VERSION: fjQ=
+  MyDbConnection: bW9uZ29kYjovL2R1b25nbnE5LXByb2plY3QyLWNvc21vc2RiLWFjYzpnaktOT0Q3RkQ2U2FCWUpNMm10OGdDT2pEVUVYZEJtRVVYTXN3TUk0VDh6a0xvYmZFaGZQSTI5cTRBVnAyYWUwNWhvZlg2cEVNNUgzOG9Felo2OWl5QT09QGR1b25nbnE5LXByb2plY3QyLWNvc21vc2RiLWFjYy5tb25nby5jb3Ntb3MuYXp1cmUuY29tOjEwMjU1Lz9zc2w9dHJ1ZSZyZXBsaWNhU2V0PWdsb2JhbGRiJnJldHJ5d3JpdGVzPWZhbHNlJm1heElkbGVUaW1lTVM9MTIwMDAwJmFwcE5hbWU9QGR1b25nbnE5LXByb2plY3QyLWNvc21vc2RiLWFjY0A=
+apiVersion: v1
+kind: Secret
+metadata:
+  name: duongnq9-project2-funtion-app
+---
+data:
+  host.master: elVodXQ3eUNzWGJxQTd5MklhZmZ2NEdsb281RWNCVDlEYmVsL1FpQnBnenlpZUh3STFoL0ZnPT0=
+  host.function.default: MVVXbG1xbkloblQwVjluSUxuVXJpVEJJQ2FpMm1IalhYdXhIVTFCU2F0YTdDNXQ2U2hubkVRPT0=
+  host.systemKey.default: VFFCNnBlOWQyVEhvSnY2QnZoQjZUaTFyL3YyMGNVMXAxYUw2YkhwWHNrSERYUEd0ajl6eEdnPT0=
+  functions.createadvertisement.default: NmpmL1d2TFEzVXd5bEt1VEZJVkZBaTZwbjJFc0dheHZ3RFpzSWhkUUg3Q2FIbkJwcDhkMFl3PT0=
+  functions.createpost.default: d2thVGRSc044RnJwd2F4UnJDeTJveHpNVEdYb1BnWm5VaW9DTE80TTBQYXEvNjNvcXR3Rlh3PT0=
+  functions.deleteadvertisement.default: enB0MkNTb2trVFl0RjE2cTZFRVJOTVV6d1U4Q2tDWlp5d3QxajdlOGFuZk5ML0w0L1VhVlZ3PT0=
+  functions.deletepost.default: RmFkQ0haVU1ZUVRCRGRydlNtNUFCYU9xRGlOakhscjUydkVGMFIxdExmTjhQZVU4WWJXQkh3PT0=
+  functions.getadvertisement.default: SGRia09WQ2U1alBrM2xvQ1JEdG1RWDhpZG5ITFVTUFlwM1Jscmc4S1hsb1RaNlFLMEVDVTRRPT0=
+  functions.getadvertisements.default: TkQyNzh3YkFEZmNSSS96U0J0dTZwT01GbEMzdzdLaVlvRHBwa25zblVoWjlXQjVsdVpPSVBRPT0=
+  functions.getpost.default: TWFoL1pYOUdnazQvUWVyVXJGQmFTWHVYaTFnaktNUEtiVnVhQkd0M1VmMlBFVURLMi9FZWFRPT0=
+  functions.getposts.default: ZkFLSkhhM2hhcXRnNmVLRjVIaUdVYjU3YUJVcTRvbVQ1RG43bXlDRVFUQU5rSEtwdG1pby9nPT0=
+  functions.updateadvertisement.default: aHhWbmpYblM4am8zT2FoRmVKdzZPTDlmZnZMY1JTN3M3RVRTQ3FvcGE0N1VWLzJRcjRuZkVBPT0=
+  functions.updatepost.default: Nll2YTlSUW9HV0Jhb0hRT1ExMlpyUGNYMC9vMlpqN2wwMVhURFJxN1I4UHVJeGwvSm02eVJRPT0=
+apiVersion: v1
+kind: Secret
+metadata:
+  name: func-keys-kube-secret-duongnq9-project2-funtion-app
+---
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: duongnq9-project2-funtion-app-function-keys-identity-svc-act
+---
+rules:
+- apiGroups:
+  - ''
+  resources:
+  - secrets
+  - configMaps
+  verbs:
+  - get
+  - list
+  - watch
+  - create
+  - update
+  - patch
+  - delete
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: functions-keys-manager-role
+---
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: functions-keys-manager-role
+subjects:
+- kind: ServiceAccount
+  name: duongnq9-project2-funtion-app-function-keys-identity-svc-act
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: duongnq9-project2-funtion-app-function-keys-identity-svc-act-functions-keys-manager-rolebinding
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: duongnq9-project2-funtion-app-http
+spec:
+  selector:
+    app: duongnq9-project2-funtion-app-http
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+  type: LoadBalancer
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duongnq9-project2-funtion-app-http
+  labels:
+    app: duongnq9-project2-funtion-app-http
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: duongnq9-project2-funtion-app-http
+  template:
+    metadata:
+      labels:
+        app: duongnq9-project2-funtion-app-http
+    spec:
+      containers:
+      - name: duongnq9-project2-funtion-app-http
+        image: duongnq9project2acr.azurecr.io/duongnq9-project2-funtion-app:latest
+        ports:
+        - containerPort: 80
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: createAdvertisement
+        - name: AzureFunctionsJobHost__functions__1
+          value: createPost
+        - name: AzureFunctionsJobHost__functions__2
+          value: deleteAdvertisement
+        - name: AzureFunctionsJobHost__functions__3
+          value: deletePost
+        - name: AzureFunctionsJobHost__functions__4
+          value: getAdvertisement
+        - name: AzureFunctionsJobHost__functions__5
+          value: getAdvertisements
+        - name: AzureFunctionsJobHost__functions__6
+          value: getPost
+        - name: AzureFunctionsJobHost__functions__7
+          value: getPosts
+        - name: AzureFunctionsJobHost__functions__8
+          value: updateAdvertisement
+        - name: AzureFunctionsJobHost__functions__9
+          value: updatePost
+        - name: AzureWebJobsSecretStorageType
+          value: kubernetes
+        - name: AzureWebJobsKubernetesSecretName
+          value: secrets/func-keys-kube-secret-duongnq9-project2-funtion-app
+        envFrom:
+        - secretRef:
+            name: duongnq9-project2-funtion-app
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+      serviceAccountName: duongnq9-project2-funtion-app-function-keys-identity-svc-act
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: duongnq9-project2-funtion-app
+  labels:
+    app: duongnq9-project2-funtion-app
+spec:
+  selector:
+    matchLabels:
+      app: duongnq9-project2-funtion-app
+  template:
+    metadata:
+      labels:
+        app: duongnq9-project2-funtion-app
+    spec:
+      containers:
+      - name: duongnq9-project2-funtion-app
+        image: duongnq9project2acr.azurecr.io/duongnq9-project2-funtion-app:latest
+        env:
+        - name: AzureFunctionsJobHost__functions__0
+          value: eventHubTrigger
+        envFrom:
+        - secretRef:
+            name: duongnq9-project2-funtion-app
+        readinessProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+        startupProbe:
+          failureThreshold: 3
+          periodSeconds: 10
+          successThreshold: 1
+          timeoutSeconds: 240
+          httpGet:
+            path: /
+            port: 80
+            scheme: HTTP
+      serviceAccountName: duongnq9-project2-funtion-app-function-keys-identity-svc-act
+---
+apiVersion: keda.sh/v1alpha1
+kind: ScaledObject
+metadata:
+  name: duongnq9-project2-funtion-app
+  labels: {}
+spec:
+  scaleTargetRef:
+    name: duongnq9-project2-funtion-app
+  triggers:
+  - type: eventgridtrigger
+    metadata:
+      direction: in
+      eventHubName: testhub
+      connection: Endpoint=sb://udacityneighborly.servicebus.windows.net/;SharedAccessKeyName=allpolicy;SharedAccessKey=LOxUOkN13xN038T1VoSsmaTt4s7vq/+VCzduS5/nH9A=;EntityPath=testhub
+---
+
